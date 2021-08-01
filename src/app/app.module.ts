@@ -9,7 +9,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import {ButtonModule} from 'primeng/button';
 import {DropdownModule} from 'primeng/dropdown';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import {ToastModule} from 'primeng/toast';
+
 
 
 import { AppComponent } from './app.component';
@@ -20,6 +24,7 @@ import { GridComponent } from './components/grid/grid.component';
 import { DataService } from './services/api.service';
 import { AdviserComponent } from './components/adviser/adviser.component';
 import { DatePipe } from '@angular/common';
+import { MessageService } from 'primeng/api';
 
 
 const routes: Routes = [
@@ -51,10 +56,13 @@ export class AppRoutingModule {}
     ButtonModule,
     DropdownModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MessagesModule,
+    MessageModule,
+    ToastModule
     
   ],
-  providers: [DataService, DatePipe],
+  providers: [DataService, DatePipe, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

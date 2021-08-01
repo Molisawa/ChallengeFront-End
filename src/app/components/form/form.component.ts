@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DataService } from 'src/app/services/api.service';
 import { IForm } from '../../interfaces/form.interface';
 import { IState } from 'src/app/interfaces/State.interface';
 import { ICity } from 'src/app/interfaces/City.interface';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-form',
@@ -21,18 +22,18 @@ export class FormComponent implements OnInit {
   filterCities: ICity[];
 
   userform: FormGroup;
-  constructor(private fb: FormBuilder, private dataService: DataService) {
+  constructor(private fb: FormBuilder, private dataService: DataService, private messageService: MessageService) {
     this.userform = this.fb.group({
-      name: new FormControl(''),
-      lastNameP: new FormControl(''),
-      lastNameM: new FormControl(''),
-      rfc: new FormControl(''),
-      city: new FormControl(''),
-      state: new FormControl(''),
-      street: new FormControl(''),
-      numberE: new FormControl(''),
-      numberI: new FormControl(''),
-      zipCode: new FormControl(''),
+      name: new FormControl('', Validators.required),
+      lastNameP: new FormControl('',Validators.required),
+      lastNameM: new FormControl('',Validators.required),
+      rfc: new FormControl('',[Validators.required, Validators.maxLength(10)]),
+      city: new FormControl('',Validators.required),
+      state: new FormControl('',Validators.required),
+      street: new FormControl('',Validators.required),
+      numberE: new FormControl('',Validators.required),
+      numberI: new FormControl('',Validators.required),
+      zipCode: new FormControl('',Validators.required),
     });
 
     this.dataService.getDataStatesMexico().then(states => {
@@ -43,7 +44,6 @@ export class FormComponent implements OnInit {
       this.cities = cities;
     });
   }
-
   ngOnInit(): void {
   }
 
@@ -65,6 +65,30 @@ export class FormComponent implements OnInit {
     if (aux < 0 || (aux === 0 && today.getDate() < bday.getDate())) {
       age--;
     }
+    const name = form.name;
+    const lastnamep = form.lastNameP;
+    const lastnamem =  form.lastNameM;
+    const ag = age;
+    const rfc = form.rfc;
+    const city = form.city.id || [];
+    const street =  form.street;
+    const numbere =   form.numberE;
+    const numberi =   form.numberI;
+    const zipcode = form.zipCode;
+
+    if (name === '' || lastnamep === '' || lastnamem === '' || ag === null || isNaN(ag) || rfc === '' ||
+        street === '' || numbere === null || numberi === null || zipcode === null || numbere === '' ||
+        numberi === '' || zipcode === '' || city === '' || form.state.id === "undefined")  {
+      this.messageService.add({
+        key: 'custom-danger' ,
+        severity: 'info',
+        summary: 'Error en el llenado del formulario',
+        detail: 'Favor de llenar todos los campos correctamente.',
+        life: 3000,
+        closable: false
+      });
+      return;
+    }
 
     const payload: IForm = {
       name: form.name,
@@ -80,14 +104,13 @@ export class FormComponent implements OnInit {
       numberE: form.numberE,
       numberI: form.numberI,
       zipCode: form.zipCode,
-    }
-
+    
+  }
     if ((form.state.id == 14) && (form.city.id == 120 || form.city.id == 39 || form.city.id == 97 || form.city.id == 98 ||
       form.city.id == 101 || form.city.id == 70 || form.city.id == 44 || form.city.id == 124 || form.city.id == 51 || form.city.id == 2)) {
 
       if (age < 30) {
         this.dataService.sendEmailDefault()
-      
       }
       else {
         this.dataService.sendEmailPromo()
@@ -96,6 +119,14 @@ export class FormComponent implements OnInit {
       this.dataService.sendEmailDefault()
     }
     this.dataService.sendData(payload);
+    this.messageService.add({
+      key: 'custom-danger' ,
+      severity: 'success',
+      summary: 'Éxito :)',
+      detail: 'El formulario ha sido enviado con éxito.',
+      life: 3000,
+      closable: false
+    });
   }
 
 }

@@ -1,3 +1,4 @@
+
 <form [formGroup]="userform" (ngSubmit)="onSubmit()">
 <p-card styleClass="form-design">
     <ng-template pTemplate="header">
@@ -5,7 +6,8 @@
     </ng-template>
     <div class="grid">
         <div class="col-6 p-fluid">
-            <input placeholder="Nombre" type="text" pInputText formControlName="name" [required]="true"/>
+            <input placeholder="Nombre" type="text" pInputText formControlName="name" />
+            
         </div>
         <div class="col-3 p-fluid">
             <input placeholder="Apellido Paterno" type="text" pInputText formControlName="lastNameP"/>
@@ -35,7 +37,7 @@
             <input placeholder="Codigo Postal" type="number" pInputText formControlName="zipCode"/>
         </div>
         <div class="col-12 p-fluid">
-            <button pButton type="submit" label="Enviar"
+            <button pButton type="submit" label="Enviar" 
                 style="background-color: #5fecc8; border-color: #5fecc8; margin-top: 1.5rem;"></button>
         </div>
     </div>
