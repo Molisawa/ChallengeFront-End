@@ -1,0 +1,11 @@
+
+:host ::ng-deep .card-design{
+  background-color:#5fecc8;
+  text-align: center;
+  border-radius: 0%;
+}
+
+    
+:host ::ng-deep .p-card{
+    box-shadow: 0 2px 10px 0px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%);
+}

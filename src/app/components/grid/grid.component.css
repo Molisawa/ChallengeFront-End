@@ -1,6 +1,6 @@
 :host ::ng-deep  .p-datatable .p-datatable-thead > tr > th {
     text-align-last: center;  
-    background-color: #BDFFFF;
+    background-color: #5fecc8;
 }
 :host ::ng-deeep .p-datatable .p-sortable-column:not(.p-highlight):hover {
     background-color: #FFFFFF;
@@ -11,4 +11,8 @@
 :host ::ng-deep  .p-card-header{
     text-align: center;
     padding: 1rem;
+}
+
+:host ::ng-deep .grid-design{
+    margin: 4rem;
 }
