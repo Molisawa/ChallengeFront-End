@@ -27,7 +27,7 @@ export class FormComponent implements OnInit {
       name: new FormControl('', Validators.required),
       lastNameP: new FormControl('',Validators.required),
       lastNameM: new FormControl('',Validators.required),
-      rfc: new FormControl('',[Validators.required, Validators.maxLength(10)]),
+      rfc: new FormControl('',[Validators.required, Validators.maxLength(10), Validators.minLength(10)]),
       city: new FormControl('',Validators.required),
       state: new FormControl('',Validators.required),
       street: new FormControl('',Validators.required),
@@ -70,15 +70,15 @@ export class FormComponent implements OnInit {
     const lastnamem =  form.lastNameM;
     const ag = age;
     const rfc = form.rfc;
-    const city = form.city.id || [];
+    const city = form.city.id;
     const street =  form.street;
     const numbere =   form.numberE;
     const numberi =   form.numberI;
     const zipcode = form.zipCode;
 
-    if (name === '' || lastnamep === '' || lastnamem === '' || ag === null || isNaN(ag) || rfc === '' ||
-        street === '' || numbere === null || numberi === null || zipcode === null || numbere === '' ||
-        numberi === '' || zipcode === '' || city === '' || form.state.id === "undefined")  {
+    if (name === '' || lastnamep === '' || lastnamem === '' || ag === null || isNaN(ag) || rfc === '' || rfc.length > 10 ||
+        street === '' || numbere === null || numberi === null || zipcode === null || numbere === '' || rfc.length < 10 ||
+        numberi === '' || zipcode === '' || city === '' || form.state.id === "undefined" )  {
       this.messageService.add({
         key: 'custom-danger' ,
         severity: 'info',

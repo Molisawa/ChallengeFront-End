@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { DataService } from 'src/app/services/api.service';
 import  { IAdviser } from '../../interfaces/Adviser.interface';
@@ -13,7 +13,7 @@ export class AdviserComponent implements OnInit {
   userform: FormGroup;
   constructor(private fb: FormBuilder, private dataService: DataService, private messageService: MessageService) { 
     this.userform = this.fb.group({
-      email: new FormControl('')
+      email: new FormControl('', Validators.required)
     });
   }
 
