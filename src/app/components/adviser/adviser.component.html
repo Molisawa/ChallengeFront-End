@@ -1,0 +1,16 @@
+<form [formGroup]="userform" (ngSubmit)="onSubmit()">
+    <p-card>
+        <ng-template pTemplate="header">
+            <h1>FORMULARIO</h1>
+        </ng-template>
+        <div class="grid">
+            <div class="col-12 p-fluid">
+                <input placeholder="Correo" type="text" pInputText formControlName="email"/>
+            </div>
+            <div class="col-12 p-fluid">
+                <button pButton type="submit" label="Enviar"
+                    style="background-color: #D08D40; border-color: #D08D40; margin-top: 1.5rem;"></button>
+            </div>
+        </div>
+    </p-card>
+    </form>

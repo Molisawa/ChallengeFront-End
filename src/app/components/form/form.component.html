@@ -1,0 +1,43 @@
+<form [formGroup]="userform" (ngSubmit)="onSubmit()">
+<p-card>
+    <ng-template pTemplate="header">
+        <h1>FORMULARIO</h1>
+    </ng-template>
+    <div class="grid">
+        <div class="col-6 p-fluid">
+            <input placeholder="Nombre" type="text" pInputText formControlName="name" [required]="true"/>
+        </div>
+        <div class="col-3 p-fluid">
+            <input placeholder="Apellido Paterno" type="text" pInputText formControlName="lastNameP"/>
+        </div>
+        <div class="col-3 p-fluid">
+            <input placeholder="Apellido Materno" type="text" pInputText formControlName="lastNameM"/>
+        </div>
+        <div class="col-12 p-fluid">
+            <input placeholder="RFC" type="text" pInputText formControlName="rfc"/>
+        </div>
+        <div class="col-2 p-fluid">
+            <p-dropdown [filter] = "true" [options]="states" placeholder="Seleccionar Estado" (onChange)="f($event)" formControlName="state" optionLabel="name"  [(ngModel)]="selectedState"></p-dropdown>
+        </div>
+        <div class="col-2 p-fluid">
+            <p-dropdown [filter] = "true" [options]="filterCities" placeholder="Seleccionar Municipio" formControlName="city" *ngIf="selectedState != null" optionLabel="name"  [(ngModel)]="selectedCity"></p-dropdown>
+        </div>
+        <div class="col-3 p-fluid">
+            <input placeholder="Calle" type="text" pInputText formControlName="street"/>
+        </div>
+        <div class="col-2 p-fluid">
+            <input placeholder="Número interior" type="number" pInputText formControlName="numberI"/>
+        </div>
+        <div class="col-2 p-fluid">
+            <input placeholder="Número exterior" type="number" pInputText formControlName="numberE"/>
+        </div>
+        <div class="col-1 p-fluid">
+            <input placeholder="Codigo Postal" type="number" pInputText formControlName="zipCode"/>
+        </div>
+        <div class="col-12 p-fluid">
+            <button pButton type="submit" label="Enviar"
+                style="background-color: #D08D40; border-color: #D08D40; margin-top: 1.5rem;"></button>
+        </div>
+    </div>
+</p-card>
+</form>

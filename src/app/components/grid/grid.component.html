@@ -1,0 +1,23 @@
+<p-card>
+    <ng-template pTemplate="header">
+        <h1>Grid</h1>
+    </ng-template>
+<p-table [value]="data">
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="date">Fecha <p-sortIcon field="date"></p-sortIcon></th>
+            <th pSortableColumn="name">Nombre <p-sortIcon field="name"></p-sortIcon></th>
+            <th pSortableColumn="address">Domicilio <p-sortIcon field="address"></p-sortIcon></th>
+            <th pSortableColumn="age">edad <p-sortIcon field="age"></p-sortIcon></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-data>
+        <tr>
+            <td>{{data.date}}</td>
+            <td>{{data.name}}</td>
+            <td>{{data.address}}</td>
+            <td>{{data.age}}</td>
+        </tr>
+    </ng-template>
+</p-table>
+</p-card>

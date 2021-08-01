@@ -1,0 +1,22 @@
+{
+    "/promo-email/*" : { 
+        "target" : "http://localhost:3000",
+        "secure" : false
+    },
+    "/default-email/*" : { 
+        "target" : "http://localhost:3000",
+        "secure" : false
+    },
+    "/send-form/*" : { 
+        "target" : "http://localhost:3000",
+        "secure" : false
+    },
+    "/save-data/*" : { 
+        "target" : "http://localhost:3000",
+        "secure" : false
+    },"/get-data/*" : { 
+        "target" : "http://localhost:3000",
+        "secure" : false
+    }
+
+}

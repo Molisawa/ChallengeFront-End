@@ -1,0 +1,4 @@
+:host ::ng-deep  .p-card-header{
+    text-align: center;
+    padding: 1rem;
+}

@@ -1,0 +1,14 @@
+:host ::ng-deep  .p-datatable .p-datatable-thead > tr > th {
+    text-align-last: center;  
+    background-color: #BDFFFF;
+}
+:host ::ng-deeep .p-datatable .p-sortable-column:not(.p-highlight):hover {
+    background-color: #FFFFFF;
+}
+:host ::ng-deep  .p-datatable .p-datatable-tbody > tr > td {
+    text-align-last: center;
+}
+:host ::ng-deep  .p-card-header{
+    text-align: center;
+    padding: 1rem;
+}
